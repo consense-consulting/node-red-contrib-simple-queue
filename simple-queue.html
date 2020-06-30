@@ -1,0 +1,39 @@
+<script type="text/javascript">
+    RED.nodes.registerType('simple-queue',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            count: {value:4}
+        },
+        inputs:1,
+        outputs:1,
+        label: function() {
+            return this.name||"simple-queue";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="simple-queue">
+    <div class="form-row">
+        <label for="node-input-count"><i class="icon-tag"></i> Count</label>
+        <input type="number" id="node-input-count">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="simple-queue">
+    <p>Limits the messages which should get processed at the same time.</p>
+
+    <dl class="message-properties">
+        <dt>count
+            <span class="property-type">number</span>
+        </dt>
+        <dd>Max messages processed at the same time</dd>
+    </dl>
+
+    <h3>Inputs</h3>
+    <p>
+        If the message has the property <code>queue_msg_id</code> it will be treated as a finished message.<br />
+        When the processing of a message is done the message should get send back to the queue to free it.<br />
+        Failure to do so will result into stuck messages and a filled queue.
+    </p>
+</script>
