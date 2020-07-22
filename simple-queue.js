@@ -14,7 +14,9 @@ module.exports = function(RED) {
                 shape: "dot",
                 text: "Waiting " + node.waiting.length + " messages"
             });
+        }, 1000);
 
+        function dequeueMessages() {
             // Check queue
             while(node.queue.length < config.count) {
                 const message = node.waiting.pop();
@@ -23,7 +25,7 @@ module.exports = function(RED) {
                 node.queue.push(message.queue_msg_id);
                 node.send(message);
             }
-        }, 1000);
+        }
 
         node.on('input', function(msg) {
             if(msg.queue_msg_id) {
@@ -32,6 +34,7 @@ module.exports = function(RED) {
                 //node.error("Clearing message id " + msg.queue_msg_id);
                 if(idx !== -1) {
                     node.queue.splice(idx, 1);
+                    dequeueMessages();
                 } else {
                     node.error("Failed to find msg id");
                 }

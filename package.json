@@ -5,7 +5,7 @@
     "name": "Jonas Bernemann",
     "email": "jonas.bernemann@consense-consulting.de"
   },
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "MIT",
   "keywords": [
     "node-red",
@@ -13,12 +13,12 @@
     "limit"
   ],
   "bugs": {
-    "url": "https://github.com/DeanCording/node-red-contrib-fs-ops/issues"
+    "url": "https://github.com/NoFr1ends/node-red-contrib-simple-queue/issues"
   },
-  "homepage": "https://github.com/DeanCording/node-red-contrib-fs-ops",
+  "homepage": "https://github.com/NoFr1ends/node-red-contrib-simple-queue",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DeanCording/node-red-contrib-fs-ops.git"
+    "url": "https://github.com/NoFr1ends/node-red-contrib-simple-queue.git"
   },
   "node-red": {
     "nodes": {

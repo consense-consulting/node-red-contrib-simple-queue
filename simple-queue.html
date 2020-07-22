@@ -3,6 +3,7 @@
         category: 'function',
         color: '#a6bbcf',
         defaults: {
+            name: {value: ""},
             count: {value:4}
         },
         inputs:1,
@@ -14,6 +15,11 @@
 </script>
 
 <script type="text/html" data-template-name="simple-queue">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+
     <div class="form-row">
         <label for="node-input-count"><i class="icon-tag"></i> Count</label>
         <input type="number" id="node-input-count">
