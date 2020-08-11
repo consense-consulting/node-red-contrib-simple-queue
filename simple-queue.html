@@ -4,7 +4,8 @@
         color: '#a6bbcf',
         defaults: {
             name: {value: ""},
-            count: {value:4}
+            count: {value:4},
+            unique_check: {value: ""}
         },
         inputs:1,
         outputs:1,
@@ -24,6 +25,11 @@
         <label for="node-input-count"><i class="icon-tag"></i> Count</label>
         <input type="number" id="node-input-count">
     </div>
+
+    <div class="form-row">
+        <label for="node-input-unique_check">Unique Key</label>
+        <input type="text" id="node-input-unique_check">
+    </div>
 </script>
 
 <script type="text/html" data-help-name="simple-queue">
@@ -34,6 +40,11 @@
             <span class="property-type">number</span>
         </dt>
         <dd>Max messages processed at the same time</dd>
+
+        <dt>unique key
+            <span class="property-type">string</span>
+        </dt>
+        <dd>If set only one message with the same value for the given key will be enqueued and processed.</dd>
     </dl>
 
     <h3>Inputs</h3>

@@ -4,8 +4,19 @@ module.exports = function(RED) {
     function SimpleQueueNode(config) {
         RED.nodes.createNode(this, config);
         this.count = config.count||4;
+        this.unique_check = config.unique_check||undefined;
+
         this.waiting = [];
         this.queue = [];
+        this.unique_index = {};
+
+        RED.events.on('runtime-event', (e) => {
+            if(e.id==='project-update') {
+                console.log(e);
+                console.log(RED.settings.userDir);
+            }
+        });
+
         let node = this;
 
         node.interval = setInterval(() => {
@@ -34,6 +45,10 @@ module.exports = function(RED) {
                 //node.error("Clearing message id " + msg.queue_msg_id);
                 if(idx !== -1) {
                     node.queue.splice(idx, 1);
+                    // If we have unique check enabled remove it from the list
+                    if(node.unique_check) {
+                        delete node.unique_index[msg.queue_msg_id];
+                    }
                     dequeueMessages();
                 } else {
                     node.error("Failed to find msg id");
@@ -42,6 +57,17 @@ module.exports = function(RED) {
             } else {
                 const m = RED.util.cloneMessage(msg);
                 m.queue_msg_id = uuidv4();
+
+                if(node.unique_check) {
+                    // Make sure its not in our unique list
+                    const key = m[node.unique_check];
+                    if(!key || Object.values(node.unique_index).indexOf(key) === -1) {
+                        node.unique_index[m.queue_msg_id] = key;
+                    } else {
+                        // Key is already in the queue or under processing, skip it
+                        return;
+                    }
+                }
 
                 if(node.queue.length < config.count) {
                     // Still place in queue
