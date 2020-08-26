@@ -10,13 +10,6 @@ module.exports = function(RED) {
         this.queue = [];
         this.unique_index = {};
 
-        RED.events.on('runtime-event', (e) => {
-            if(e.id==='project-update') {
-                console.log(e);
-                console.log(RED.settings.userDir);
-            }
-        });
-
         let node = this;
 
         node.interval = setInterval(() => {
