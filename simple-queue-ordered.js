@@ -23,7 +23,7 @@ module.exports = function(RED) {
         function dequeueMessages() {
             // Check queue
             while(node.queue.length < config.count) {
-                const message = node.waiting.pop();
+                const message = node.waiting.shift();
                 if(!message) break; // nothing is waiting in queue
 
                 node.queue.push(message.queue_msg_id);
@@ -79,5 +79,5 @@ module.exports = function(RED) {
         });
     }
 
-    RED.nodes.registerType("simple-queue", SimpleQueueNode);
+    RED.nodes.registerType("simple-queue-ordered", SimpleQueueNode);
 }

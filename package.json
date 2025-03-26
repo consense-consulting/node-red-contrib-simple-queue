@@ -1,11 +1,11 @@
 {
-  "name": "node-red-contrib-simple-queue",
-  "description": "Easy node-red queue to limit the messages processed at the same time.",
+  "name": "node-red-contrib-simple-queue-ordered",
+  "description": "Easy node-red queue to limit the messages processed at the same time. It keeps the FIFO order of queue processing.",
   "author": {
-    "name": "Jonas Bernemann",
-    "email": "jonas.bernemann@consense-consulting.de"
+    "name": "Sebastian Gurgul",
+    "email": "sebastian.gurgul@gmail.com"
   },
-  "version": "1.1.0",
+  "version": "1.0.2",
   "license": "MIT",
   "keywords": [
     "node-red",
@@ -13,19 +13,23 @@
     "limit"
   ],
   "bugs": {
-    "url": "https://github.com/NoFr1ends/node-red-contrib-simple-queue/issues"
+    "url": "https://github.com/sgurgul/node-red-contrib-simple-queue-ordered/issues"
   },
-  "homepage": "https://github.com/NoFr1ends/node-red-contrib-simple-queue",
+  "homepage": "https://github.com/sgurgul/node-red-contrib-simple-queue-ordered",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NoFr1ends/node-red-contrib-simple-queue.git"
+    "url": "https://github.com/sgurgul/node-red-contrib-simple-queue-ordered.git"
   },
   "node-red": {
+    "version": ">=2.0.0",
     "nodes": {
-      "simple-queue": "simple-queue.js"
+      "simple-queue-ordered": "simple-queue-ordered.js"
     }
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },  
   "dependencies": {
-    "uuid": "^8.2.0"
+    "uuid": "^11.0.5"
   }
 }

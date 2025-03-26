@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('simple-queue',{
+    RED.nodes.registerType('simple-queue-ordered',{
         category: 'function',
         color: '#a6bbcf',
         defaults: {
@@ -10,12 +10,12 @@
         inputs:1,
         outputs:1,
         label: function() {
-            return this.name||"simple-queue";
+            return this.name||"simple-queue-ordered";
         }
     });
 </script>
 
-<script type="text/html" data-template-name="simple-queue">
+<script type="text/html" data-template-name="simple-queue-ordered">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name">
@@ -32,7 +32,7 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="simple-queue">
+<script type="text/html" data-help-name="simple-queue-ordered">
     <p>Limits the messages which should get processed at the same time.</p>
 
     <dl class="message-properties">
